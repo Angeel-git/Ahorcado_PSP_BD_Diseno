@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); /*Importo la letra*/
+
+.background {
+    -fx-background-image: url("fondo.jpg");
+    -fx-background-size: cover;  /* Hace que la imagen cubra el 100% del HBox*/
+    -fx-background-repeat: no-repeat;  /* Evita que la imagen se repita */
+}
+
+.Lavel0{
+    -fx-font-family: 'VT323';   /*Tipo Letra*/
+    -fx-font-size: 50px;        /*Tamaño*/
+    -fx-text-fill: #FFA500;     /*Color letra*/
+}
+
+.Boton{
+    -fx-font-family: 'VT323';
+    -fx-font-size: 50px;
+    -fx-text-fill: #FFA500;
+    -fx-background-color: #2E2E2E; /*fondo boton*/
+}
