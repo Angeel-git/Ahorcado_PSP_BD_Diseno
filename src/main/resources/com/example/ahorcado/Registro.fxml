@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ahorcado.ControllerRegistro"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <!-- Etiqueta para pedir el nombre -->
+    <Label text="Introduce tu nombre:" layoutX="200" layoutY="150" />
+
+    <!-- Campo de texto para que el usuario ingrese su nombre -->
+    <TextField fx:id="inputNombre" layoutX="200" layoutY="180" prefWidth="200"/>
+
+    <!-- Botón para confirmar el nombre -->
+    <Button text="Aceptar" layoutX="250" layoutY="220" onAction="#registrarNombre"/>
+
+</AnchorPane>

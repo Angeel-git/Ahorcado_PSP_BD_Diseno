@@ -10,7 +10,6 @@ public class ControllerMenu {
     private Escenas escena = new Escenas();
 
 
-
     public void initialize()
     {
         System.out.println("Estas en -> Menu");
@@ -18,9 +17,9 @@ public class ControllerMenu {
         LanzarServidor();
     }
 
-    public void EscenaJuego(ActionEvent event) {
+    public void EscenaRegistro(ActionEvent event) {
         // Cargar la escena del juego
-        escena.cargarEscena1(event);
+        escena.cargarEscenaRegistro(event);
     }
 
 

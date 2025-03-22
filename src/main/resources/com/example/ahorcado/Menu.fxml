@@ -12,5 +12,5 @@
     </padding>
 
     <Label text="Bienvenido al AHORCADO" styleClass="Lavel0" layoutX="550.0" layoutY="175.0"/>
-    <Button text="Entrar" styleClass="Boton" layoutX="700.0" layoutY="450.0" onAction="#EscenaJuego"/>
+    <Button text="Entrar" styleClass="Boton" layoutX="700.0" layoutY="450.0" onAction="#EscenaRegistro"/>
 </AnchorPane>

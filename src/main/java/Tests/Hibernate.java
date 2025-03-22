@@ -42,50 +42,16 @@ public class Hibernate {
         }
     }
 
+    public static void insertarJugador(Jugador jugador) {
+        try (Session sesion = getSession()) {
+            sesion.beginTransaction();
+            sesion.persist(jugador); // Guarda el jugador en la base de datos
+            sesion.getTransaction().commit();
+        }
+    }
+
     public static void cerrar() {
         sessionFactory.close();
         StandardServiceRegistryBuilder.destroy(registry);
     }
 }
-
-/*public class Hibernate {
-
-    public static void insertarJSON(List<Palabra> palabras) {
-
-        StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure().build();
-        SessionFactory sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
-
-
-        Session sesion = sf.openSession();
-        sesion.beginTransaction();
-
-        for (Palabra palabra : palabras){
-            sesion.persist(palabra);
-        }
-
-
-        sesion.getTransaction().commit();
-        sesion.close();
-        sf.close();
-
-
-    }
-
-    public static void hacerConsulta(List<Palabra> palabras) {
-
-        StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure().build();
-        SessionFactory sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
-
-
-        Session sesion = sf.openSession();
-        sesion.beginTransaction();
-
-
-
-        sesion.getTransaction().commit();
-        sesion.close();
-        sf.close();
-
-
-    }
-}*/

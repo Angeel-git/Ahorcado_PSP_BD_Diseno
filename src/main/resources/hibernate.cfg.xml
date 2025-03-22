@@ -15,6 +15,7 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <mapping class="Tests.Palabra"/>
+        <mapping class="Tests.Jugador"/>
 
    </session-factory>
   </hibernate-configuration>
