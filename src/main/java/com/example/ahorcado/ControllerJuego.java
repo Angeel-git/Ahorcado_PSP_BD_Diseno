@@ -1,10 +1,11 @@
 package com.example.ahorcado;
 
+import Tests.Alertas;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,9 +13,9 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class ControllerJuego {
-    @FXML private Label estadoJuego; // Muestra el estado del juego
+    @FXML public Label estadoJuego; //Muestra la palabra con las letras adivinadas
+    @FXML private Label estadoServidor; // Indica si hay conexión con el servidor
     @FXML private TextField inputLetra; // Campo de texto para ingresar una letra
-    @FXML private Button botonEnviar; // Botón para enviar la letra
 
     private Socket cliente;
     private DataOutputStream flujoSalida;
@@ -32,20 +33,30 @@ public class ControllerJuego {
                 cliente = new Socket("localhost", 6000);
                 flujoSalida = new DataOutputStream(cliente.getOutputStream());
                 flujoEntrada = new DataInputStream(cliente.getInputStream());
-                Platform.runLater(() -> estadoJuego.setText("Conectado al servidor"));
+
+                Platform.runLater(() -> {
+                    estadoServidor.setText("Conectado al servidor");
+                    estadoServidor.setStyle("-fx-text-fill: green;");
+                });
+
             } catch (IOException e) {
-                e.printStackTrace();
-                Platform.runLater(() -> estadoJuego.setText("Error al conectar con el servidor"));
+                Platform.runLater(() -> {
+                    estadoServidor.setText("Error al conectar con el servidor");
+                    estadoServidor.setStyle("-fx-text-fill: red;");
+                });
+
+                Alertas.error("Error de conexión", "No se pudo conectar al servidor", "Verifica que el servidor está en ejecución e intenta nuevamente.");
             }
         }).start();
     }
 
-    // Metodo para enviar una letra al servidor
+    // Metodo para enviar una letra al servidor(se llama desde el botón)
     @FXML
     private void enviarLetra() {
         String letra = inputLetra.getText().trim();
-        if (letra.isEmpty() || letra.length() > 1) {
-            estadoJuego.setText("Introduce solo una letra.");
+
+        if (letra.length() != 1) {
+            Alertas.error("Entrada inválida", "Error en el formato de la letra", "Debes introducir solo una letra.");
             return;
         }
 
@@ -59,16 +70,23 @@ public class ControllerJuego {
 
                 Platform.runLater(() -> estadoJuego.setText(respuesta)); // Mostrar el estado en la UI
 
-                // Si la partida ha terminado, cerrar la conexión
+                // Si la partida ha terminado, mostrar alerta y cerrar la conexión
                 if (respuesta.contains("Partida finalizada.")) {
                     cerrarConexion();
                 }
+
             } catch (IOException e) {
-                e.printStackTrace();
-                Platform.runLater(() -> estadoJuego.setText("Error al enviar la letra."));
+                Alertas.error("Error de comunicación", "No se pudo enviar la letra", "Revisa la conexión con el servidor.");
             }
         }).start();
     }
+
+    @FXML
+    public void volverMenu(ActionEvent event) {
+        Escenas escena = new Escenas();
+        escena.cargarEscena0(event);
+    }
+
 
     // Metodo para cerrar la conexión con el servidor
     private void cerrarConexion() {
@@ -77,7 +95,9 @@ public class ControllerJuego {
             if (flujoEntrada != null) flujoEntrada.close();
             if (cliente != null) cliente.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Alertas.error("Error de conexión", "No se pudo cerrar la conexión", "Hubo un problema al cerrar la conexión con el servidor.");
         }
     }
+
+
 }

@@ -22,25 +22,7 @@ public class LanzadorApp extends Application {
         } catch (NullPointerException e) {
             System.err.println("Error al cargar el icono.");
         }
-
-        // Iniciar servidor al abrir la aplicación
-        LanzarServidor();
     }
-
-    private void LanzarServidor() {
-        Thread serverThread = new Thread(() -> {
-            try {
-                Servidor.main(new String[]{});
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        serverThread.setDaemon(true);
-        serverThread.start();
-        System.out.println("Servidor lanzado con éxito");
-    }
-
     public static void main(String[] args) {
         launch();
     }

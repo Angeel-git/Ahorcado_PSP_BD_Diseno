@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); /*Importo la letra*/
+
+.background {
+    -fx-background-image: url("fondoJuego2.jpg");
+    -fx-background-size: cover;  /* Hace que la imagen cubra el 100% del componente*/
+    -fx-background-position: center; /* Centra la imagen */
+    -fx-background-repeat: no-repeat;  /* Evita que la imagen se repita */
+}
+
+.estadoServer{
+    -fx-font-family: 'VT323';   /*Tipo Letra*/
+    -fx-opacity: 1; /* Ajusta la opacidad*/
+    -fx-font-size: 15px; /*Tamaño*/
+}
+
+.estadoJuego{
+    -fx-font-family: 'VT323';   /*Tipo Letra*/
+    -fx-opacity: 1; /* Ajusta la opacidad*/
+    -fx-text-fill: #FFA500;     /*Color letra*/
+    -fx-font-size: 25px; /*Tamaño*/
+    -fx-alignment: center; /* Centra el texto horizontalmente */
+    -fx-text-alignment: center;  /*Asegura que el texto esté centrado */
+    -fx-background-color: rgba(30, 30, 30, 0.5); /* Capa semitransparente gris */
+}

@@ -103,7 +103,7 @@ public class Servidor {
             return "Has perdido. La palabra era: " + palabra + "\nPartida finalizada.";
         }
 
-        return encontrada ? "Correcto! Estado actual: " + estadoActual.toString() + " Intentos restantes: " + intentos
-                : "Incorrecto! Estado actual: " + estadoActual.toString() + " Intentos restantes: " + intentos;
+        return encontrada ? "Correcto!\nEstado actual: " + estadoActual.toString() + "\nIntentos restantes: " + intentos
+                : "Incorrecto\nEstado actual: " + estadoActual.toString() + "\nIntentos restantes: " + intentos;
     }
 }

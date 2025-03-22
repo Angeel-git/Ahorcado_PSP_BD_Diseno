@@ -7,17 +7,27 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.ahorcado.ControllerJuego"
             stylesheets="@Juego.css"
+            styleClass="background"
             prefHeight="400.0" prefWidth="600.0">
 
+    <!-- Etiqueta para mostrar el estado del servidor -->
+    <Label fx:id="estadoServidor" text="Estado del servidor: Desconectado"
+           layoutX="1015" layoutY="50" styleClass="estadoServer"/>
+
     <!-- Etiqueta para mostrar el estado del juego -->
-    <Label fx:id="estadoJuego" text="Bienvenido al Ahorcado"
-           layoutX="50" layoutY="50" />
+    <Label fx:id="estadoJuego" text="Introduzca una letra" styleClass="estadoJuego"
+           layoutX="455" layoutY="210" />
+
 
     <!-- Campo de texto donde el usuario ingresa una letra -->
-    <TextField fx:id="inputLetra" layoutX="50" layoutY="100" />
+    <TextField fx:id="inputLetra" layoutX="550" layoutY="350" />
 
     <!-- Botón para enviar la letra -->
-    <Button fx:id="botonEnviar" text="Enviar" layoutX="50" layoutY="150"
+    <Button text="Enviar" layoutX="600" layoutY="490"
             onAction="#enviarLetra" />
+
+    <!-- Botón para volver al menú -->
+    <Button text="Volver" layoutX="600" layoutY="530"
+            onAction="#volverMenu" />
 
 </AnchorPane>
