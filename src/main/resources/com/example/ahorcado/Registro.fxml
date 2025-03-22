@@ -17,4 +17,7 @@
     <!-- Botón para confirmar el nombre -->
     <Button text="Aceptar" layoutX="250" layoutY="220" onAction="#registrarNombre"/>
 
+    <!--Ir a la escena del juego-->
+    <Button text="Jugar" layoutX="250" layoutY="300" onAction="#irAJuego"/>
+
 </AnchorPane>

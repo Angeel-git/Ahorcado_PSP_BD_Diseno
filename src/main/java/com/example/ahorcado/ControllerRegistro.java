@@ -1,5 +1,6 @@
 package com.example.ahorcado;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import Tests.Hibernate;
@@ -26,5 +27,10 @@ public class ControllerRegistro {
         Hibernate.insertarJugador(jugador);
 
         System.out.println("Jugador registrado: " + nombre);
+    }
+
+    public void irAJuego(ActionEvent event) {
+        Escenas escena = new Escenas();
+        escena.cargarEscena1(event);
     }
 }

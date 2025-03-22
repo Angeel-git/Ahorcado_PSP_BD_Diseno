@@ -18,6 +18,9 @@ public class Hibernate {
     }
 
     public static void insertarJSON(List<Palabra> palabras) {
+        // Primero, eliminamos las palabras anteriores
+        eliminarPalabras();
+
         Session sesion = getSession();
             sesion.beginTransaction();
 
@@ -42,10 +45,27 @@ public class Hibernate {
         }
     }
 
+    public static void insertarPartida(Partida partida) {
+        try (Session sesion = getSession()) {
+            sesion.beginTransaction();
+            sesion.persist(partida); // Guarda la partida en la base de datos
+            sesion.getTransaction().commit();
+        }
+    }
+
+
     public static void insertarJugador(Jugador jugador) {
         try (Session sesion = getSession()) {
             sesion.beginTransaction();
             sesion.persist(jugador); // Guarda el jugador en la base de datos
+            sesion.getTransaction().commit();
+        }
+    }
+
+    public static void eliminarPalabras() {
+        try (Session sesion = getSession()) {
+            sesion.beginTransaction();
+            sesion.createQuery("DELETE FROM Palabra").executeUpdate(); // Elimina todos los registros de la tabla Palabra
             sesion.getTransaction().commit();
         }
     }
