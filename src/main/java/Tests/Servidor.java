@@ -18,13 +18,12 @@ public class Servidor {
 
     public static void main(String[] args) throws IOException {
 
+        // Se elige un número aleatorio para obtener una palabra de la BBDD
         Random random = new Random();
         int numero = random.nextInt(50) + 1;
 
         // Leer palabras del fichero y guardarlo en una lista
         palabras = LecturaJSON.leerJSON();
-        //palabras.forEach(p -> System.out.println("ID: " + p.getId() + ", Palabra: " + p.getPalabra()));
-
         // Insertar mediante hibernate las palabras
         Hibernate.insertarJSON(palabras);
 
@@ -35,14 +34,15 @@ public class Servidor {
         letrasAdivinadas = new boolean[palabra.length()];
         intentos = palabra.length() / 2;
 
+        //Crear el servidor en el puerto 6000
         int numeroPuerto = 6000;
         ServerSocket servidor = new ServerSocket(numeroPuerto);
         System.out.println("Esperando al Cliente...");
+        //Esperar la conexión de un cliente
         Socket clienteConectado = servidor.accept();
         System.out.println("Cliente conectado");
 
-
-
+        //flujos de entrada y salida para la comunicación con el cliente
         DataInputStream entrada = new DataInputStream(clienteConectado.getInputStream());
         DataOutputStream salida = new DataOutputStream(clienteConectado.getOutputStream());
 
