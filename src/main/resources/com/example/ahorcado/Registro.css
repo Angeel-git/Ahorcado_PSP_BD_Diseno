@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); /*Importo la letra*/
+
+.background {
+    -fx-background-image: url("fondoJuego2.jpg");
+    -fx-background-size: cover;  /* Hace que la imagen cubra el 100% del componente*/
+    -fx-background-position: center; /* Centra la imagen */
+    -fx-background-repeat: no-repeat;  /* Evita que la imagen se repita */
+}
+
+.labelNombre{
+    -fx-text-fill: #39FF14; /* verde neón */
+    -fx-font-size: 15px;
+}
+
+.button {
+    -fx-background-color: #8B0000; /* Rojo sangre */
+    -fx-text-fill: white; /* Color del texto en blanco */
+    -fx-font-size: 18px; /* Tamaño de la fuente más grande */
+    -fx-padding: 10px 20px; /* Espaciado alrededor del texto */
+    -fx-background-radius: 5px; /* Bordes redondeados */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-border-color: #6A0000; /* Color del borde en un tono más oscuro */
+    -fx-border-width: 2px; /* Grosor del borde */
+}
+
+.button:hover {
+    -fx-background-color: #B22222; /* Color de fondo más claro cuando se pasa el ratón */
+}

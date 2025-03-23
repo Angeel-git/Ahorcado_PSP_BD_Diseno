@@ -107,9 +107,4 @@ public class ControllerJuego {
             // Manejo de errores al cerrar la conexión
         }
     }
-
-    public void volverMenu(ActionEvent event) {
-        Escenas escena = new Escenas();
-        escena.cargarEscena0(event);
-    }
 }

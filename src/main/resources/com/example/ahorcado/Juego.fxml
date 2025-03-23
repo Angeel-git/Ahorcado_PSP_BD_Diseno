@@ -26,8 +26,5 @@
     <Button text="Enviar" layoutX="600" layoutY="490"
             onAction="#enviarLetra" />
 
-    <!-- Botón para volver al menú -->
-    <Button text="Volver" layoutX="600" layoutY="530"
-            onAction="#volverMenu" />
 
 </AnchorPane>
