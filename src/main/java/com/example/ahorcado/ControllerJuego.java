@@ -85,15 +85,8 @@ public class ControllerJuego {
 
     // Guardar los resultados de la partida en la base de datos
     private void guardarResultado() {
-
+        // 1 es perder
         int gano = 1;
-        /*boolean a = estadoJuego.getText().contains("Correcto!");
-        System.out.println("-------------");
-        System.out.println("-------------");
-        System.out.println(estadoJuego.getText());
-        System.out.println(a);
-        System.out.println("-------------");
-        System.out.println("-------------");*/
         if(estadoJuego.getText().contains("Correcto!")) {
             // Asumimos que el jugador y la palabra ya están definidos
             gano = 0;
@@ -104,22 +97,6 @@ public class ControllerJuego {
         Palabra palabra = new Palabra(Servidor.numero);
 
         Jugador jug = Hibernate.hacerConsultaJug(jugador1.getNombre());
-
-        System.out.println("---------------");
-        System.out.println("---------------");
-        System.out.println("---------------");
-        System.out.println("---------------");
-        System.out.println("---------------");
-        System.out.println(jug);
-        System.out.println("---------------");
-        System.out.println("---------------");
-        System.out.println("---------------");
-        System.out.println("---------------");
-        System.out.println("---------------");
-
-        int id = jug.getId();
-
-
         // Crear la partida y guardarla
         Partida partida = new Partida(jug, palabra, intentos, gano);
         Hibernate.insertarPartida(partida); // Llamada al metodo insertarPartida() para guardar la partida
