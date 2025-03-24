@@ -14,20 +14,23 @@ public class Servidor {
     public static String palabra;
     private static boolean[] letrasAdivinadas;
 
-    private static int intentos;
+    public static int numero;
+
+    public static int intentos;    //Variable pra acceder al numero id de la palabra desde la clase controllerJuego
 
     public static void main(String[] args) throws IOException {
-
-        // Se elige un número aleatorio para obtener una palabra de la BBDD
-        Random random = new Random();
-        int numero = random.nextInt(50) + 1;
 
         // Leer palabras del fichero y guardarlo en una lista
         palabras = LecturaJSON.leerJSON();
         // Insertar mediante hibernate las palabras
         Hibernate.insertarJSON(palabras);
 
-        // Obtener una palabra de la BBDD de forma aleatoria
+        // Se elige un número aleatorio para obtener una palabra de la BBDD
+        Random random = new Random();
+        numero = random.nextInt(50) + 1;
+
+
+        // Obtener una palabra de la BBDD de forma aleatoria(utiliza el numero random para seleccionar el id)
         Palabra palabraHib = Hibernate.hacerConsulta(numero);
         palabra = palabraHib.getPalabra();
 

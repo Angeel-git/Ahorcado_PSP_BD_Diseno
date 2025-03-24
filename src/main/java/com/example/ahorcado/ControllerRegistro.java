@@ -41,6 +41,7 @@ public class ControllerRegistro {
         // Jugador 1
         if (!Hibernate.jugadorExiste(nombre1)) {
             jugador1 = new Jugador();
+
             jugador1.setNombre(nombre1);
             Hibernate.insertarJugador(jugador1);
             System.out.println("Jugador 1 registrado: " + nombre1);

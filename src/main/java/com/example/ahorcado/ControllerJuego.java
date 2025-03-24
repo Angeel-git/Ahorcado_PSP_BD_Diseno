@@ -1,9 +1,6 @@
 package com.example.ahorcado;
 
-import Tests.Hibernate;
-import Tests.Partida;
-import Tests.Palabra;
-import Tests.Jugador;
+import Tests.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +11,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import static Tests.Servidor.palabra;
+import static com.example.ahorcado.ControllerRegistro.jugador1;
+
 public class ControllerJuego {
 
     @FXML public Label estadoJuego; // Muestra la palabra con las letras adivinadas
@@ -23,9 +23,6 @@ public class ControllerJuego {
     private Socket cliente;
     private DataOutputStream flujoSalida;
     private DataInputStream flujoEntrada;
-
-    private Jugador jugador; // Variable para almacenar al jugador
-    private Palabra palabra; // Variable para almacenar la palabra
 
     public void initialize() {
         System.out.println("Estas en -> Juego");
@@ -88,12 +85,43 @@ public class ControllerJuego {
 
     // Guardar los resultados de la partida en la base de datos
     private void guardarResultado() {
-        // Asumimos que el jugador y la palabra ya están definidos
-        boolean gano = estadoJuego.getText().contains("¡Ganaste!"); // Ejemplo para determinar si el jugador ganó
+
+        int gano = 1;
+        /*boolean a = estadoJuego.getText().contains("Correcto!");
+        System.out.println("-------------");
+        System.out.println("-------------");
+        System.out.println(estadoJuego.getText());
+        System.out.println(a);
+        System.out.println("-------------");
+        System.out.println("-------------");*/
+        if(estadoJuego.getText().contains("Correcto!")) {
+            // Asumimos que el jugador y la palabra ya están definidos
+            gano = 0;
+        }
+        // Ejemplo para determinar si el jugador ganó
         int intentos = 6 - Integer.parseInt(estadoJuego.getText().replaceAll("[^0-9]", "")); // Asumimos que los intentos se muestran en la UI
 
+        Palabra palabra = new Palabra(Servidor.numero);
+
+        Jugador jug = Hibernate.hacerConsultaJug(jugador1.getNombre());
+
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println(jug);
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("---------------");
+
+        int id = jug.getId();
+
+
         // Crear la partida y guardarla
-        Partida partida = new Partida(jugador, palabra, intentos, gano);
+        Partida partida = new Partida(jug, palabra, intentos, gano);
         Hibernate.insertarPartida(partida); // Llamada al metodo insertarPartida() para guardar la partida
     }
 

@@ -22,12 +22,12 @@ public class Partida {
     private int intentos;
 
     @Column
-    private boolean gano;
+    private int gano;
 
     public Partida() {
     }
 
-    public Partida(Jugador jugador, Palabra palabra, int intentos, boolean gano) {
+    public Partida(Jugador jugador, Palabra palabra, int intentos, int gano) {
         this.jugador = jugador;
         this.palabra = palabra;
         this.intentos = intentos;
@@ -63,11 +63,11 @@ public class Partida {
         this.intentos = intentos;
     }
 
-    public boolean isGano() {
+    public int isGano() {
         return gano;
     }
 
-    public void setGano(boolean gano) {
+    public void setGano(int gano) {
         this.gano = gano;
     }
 }

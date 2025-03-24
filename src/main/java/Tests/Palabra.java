@@ -14,6 +14,10 @@ public class Palabra {
     public Palabra() {
     }
 
+    public Palabra(int id) {
+        this.id = id;
+    }
+
     public Palabra(int id, String palabra) {
         this.id = id;
         this.palabra = palabra;

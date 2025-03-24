@@ -30,7 +30,7 @@ public class LecturaJSON {
             listaPalabras.add(new Palabra(id, palabra));
         });
 
-            return listaPalabras;
+        return listaPalabras;
 
     }
 }
